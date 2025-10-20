@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title>Athletica Pro Shop</title>
+  <desc>Neutral athletics logo: stylized A inside a shield.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="180" height="180" rx="24" fill="#ffffff"/>
+  <g transform="translate(20,20)">
+    <rect x="0" y="0" width="160" height="160" rx="20" fill="url(#g)"/>
+    <path d="M80 28 L124 132 H108 L95 100 H65 L52 132 H36 L80 28 Z M72 84 H88 L80 63 Z" fill="#ffffff"/>
+  </g>
+</svg>
+
