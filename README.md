@@ -69,12 +69,13 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 ### Optional: enable DB-backed admin
 
-This fork includes an optional SQLite (Prisma) catalog and a basic admin area protected with HTTP Basic Auth.
+This fork includes an optional SQLite (Prisma) catalog and an admin area protected by NextAuth session + `ADMIN` role.
 
 - Set `USE_DB=true` and `DATABASE_URL="file:./prisma/dev.db"` in `.env`.
-- Set `ADMIN_USER` and `ADMIN_PASSWORD`.
 - Install Prisma client and generate: `pnpm install` then `npx prisma generate` and `npx prisma migrate dev --name init`.
-- Visit `/admin/products` with Basic Auth to create products.
+- Register in `/register` and log in at `/login`.
+- The first created user is promoted to `ADMIN` automatically.
+- Visit `/admin/products` with an `ADMIN` session to manage products.
 
 ### Optional: user accounts (NextAuth credentials)
 
