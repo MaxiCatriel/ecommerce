@@ -46,12 +46,17 @@ export default function LoginPage() {
           <label className="mb-1 block text-sm">{t.login.password}</label>
           <input className="w-full rounded border p-2" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
+        <p className="text-right text-sm">
+          <a className="text-blue-600 underline" href="/forgot-password">
+            {t.login.forgotPassword}
+          </a>
+        </p>
         {error ? <p className="text-sm text-red-600">{t.login.error}</p> : null}
         <button className="rounded bg-blue-600 px-4 py-2 text-white">{t.login.submit}</button>
       </form>
       <p className="mt-4 text-sm">
         ¿No tienes cuenta?{' '}
-        <a className="text-blue-600 underline" href="/(auth)/register">
+        <a className="text-blue-600 underline" href="/register">
           {t.register.submit}
         </a>
       </p>

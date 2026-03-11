@@ -1,7 +1,26 @@
 export default {
   navbar: { login: 'Ingresar', register: 'Registrarse', admin: 'Admin', logout: 'Salir' },
-  login: { title: 'Ingresar', email: 'Email', password: 'Contraseña', submit: 'Entrar', error: 'Credenciales inválidas' },
+  login: { title: 'Ingresar', email: 'Email', password: 'Contraseña', submit: 'Entrar', error: 'Credenciales inválidas', forgotPassword: '¿Olvidaste tu contraseña?' },
   register: { title: 'Crear cuenta', name: 'Nombre', email: 'Email', password: 'Contraseña', submit: 'Registrarme' },
+  forgotPassword: {
+    title: 'Recuperar contraseña',
+    submit: 'Enviar enlace de recuperación',
+    sending: 'Enviando...',
+    success: 'Si el email existe, te enviamos un enlace para restablecer tu contraseña.',
+    error: 'No pudimos procesar tu solicitud. Intenta nuevamente.'
+  },
+  resetPassword: {
+    title: 'Restablecer contraseña',
+    newPassword: 'Nueva contraseña',
+    confirmPassword: 'Confirmar contraseña',
+    submit: 'Guardar nueva contraseña',
+    saving: 'Guardando...',
+    success: 'Contraseña actualizada. Redirigiendo al login...',
+    invalidToken: 'El enlace es inválido o está incompleto.',
+    passwordMin: 'La contraseña debe tener al menos 6 caracteres.',
+    passwordMismatch: 'Las contraseñas no coinciden.',
+    error: 'No se pudo restablecer la contraseña. Solicita un nuevo enlace.'
+  },
   product: { related: 'Productos relacionados' },
   common: {
     create: 'Crear', save: 'Guardar', delete: 'Eliminar',
