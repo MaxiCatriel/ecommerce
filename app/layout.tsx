@@ -6,6 +6,7 @@ import { Navbar } from 'components/layout/navbar';
 import { EmailPopup } from 'components/newsletter';
 import { QueryProvider } from 'components/providers/query-provider';
 import { WelcomeToast } from 'components/welcome-toast';
+import { WhatsAppButton } from 'components/whatsapp-button';
 import { GeistSans } from 'geist/font/sans';
 import { getDictionary, getLocale } from 'lib/i18n/server';
 import { getCart } from 'lib/shopify';
@@ -56,6 +57,7 @@ export default async function RootLayout({
                   <Toaster closeButton />
                   <WelcomeToast />
                   <EmailPopup />
+                  <WhatsAppButton />
                   {process.env.NEXT_PUBLIC_ENABLE_CHAT === 'true' && <ChatWidget />}
                 </main>
               </CartProvider>
