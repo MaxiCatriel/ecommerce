@@ -151,15 +151,29 @@ export function NewsletterSignup({
 export function EmailPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const dismissDays = 7;
+
+  const isDismissed = () => {
+    const dismissedUntil = Number(localStorage.getItem('newsletter-popup-dismissed-until') || '0');
+    return dismissedUntil > Date.now() || Boolean(sessionStorage.getItem('newsletter-popup-dismissed'));
+  };
+
+  const dismissPopup = () => {
+    sessionStorage.setItem('newsletter-popup-dismissed', 'true');
+    localStorage.setItem(
+      'newsletter-popup-dismissed-until',
+      String(Date.now() + dismissDays * 24 * 60 * 60 * 1000)
+    );
+    setIsVisible(false);
+    setHasShown(true);
+  };
 
   useEffect(() => {
-    // Show popup after 30 seconds or on exit intent
-    // Do not show if user dismissed during this session
-    const sessionDismissed = sessionStorage.getItem('newsletter-popup-dismissed');
-    if (sessionDismissed) return;
+    if (isDismissed()) return;
 
     const timer = setTimeout(() => {
-      if (!hasShown && !localStorage.getItem('newsletter-popup-shown') && !sessionStorage.getItem('newsletter-popup-dismissed')) {
+      const hasShownBefore = Boolean(localStorage.getItem('newsletter-popup-shown'));
+      if (!hasShown && !hasShownBefore && !isDismissed()) {
         setIsVisible(true);
         setHasShown(true);
         localStorage.setItem('newsletter-popup-shown', 'true');
@@ -167,7 +181,8 @@ export function EmailPopup() {
     }, 30000);
 
     const handleExitIntent = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasShown && !sessionStorage.getItem('newsletter-popup-dismissed')) {
+      const hasShownBefore = Boolean(localStorage.getItem('newsletter-popup-shown'));
+      if (e.clientY <= 0 && !hasShown && !hasShownBefore && !isDismissed()) {
         setIsVisible(true);
         setHasShown(true);
         localStorage.setItem('newsletter-popup-shown', 'true');
@@ -180,7 +195,7 @@ export function EmailPopup() {
       clearTimeout(timer);
       document.removeEventListener('mouseleave', handleExitIntent);
     };
-  });
+  }, [hasShown]);
 
   if (!isVisible) return null;
 
@@ -192,7 +207,7 @@ export function EmailPopup() {
         className="relative"
       >
         <button
-          onClick={() => setIsVisible(false)}
+          onClick={dismissPopup}
           className="absolute -top-2 -right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
         >
           <XMarkIcon className="w-4 h-4 text-gray-600" />
@@ -205,11 +220,7 @@ export function EmailPopup() {
         />
         <div className="mt-4 text-center">
           <button
-            onClick={() => {
-              sessionStorage.setItem('newsletter-popup-dismissed', 'true');
-              setIsVisible(false);
-              setHasShown(true);
-            }}
+            onClick={dismissPopup}
             className="text-sm text-gray-500 hover:underline"
           >
             No quiero
@@ -236,7 +247,7 @@ export function CartAbandonmentPopup() {
 
     document.addEventListener('mouseleave', handleExitIntent);
     return () => document.removeEventListener('mouseleave', handleExitIntent);
-  });
+  }, []);
 
   if (!isVisible) return null;
 
