@@ -63,7 +63,6 @@ export default async function RootLayout({
             </AuthSessionProvider>
           </QueryProvider>
         </I18nProvider>
-        <Analytics />
       </body>
     </html>
   );
