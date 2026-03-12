@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react';
 import AuthSessionProvider from 'components/auth/session-provider';
 import { CartProvider } from 'components/cart/cart-context';
 import { I18nProvider } from 'components/i18n/provider';

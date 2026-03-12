@@ -10,7 +10,7 @@ import { authOptions } from '../auth';
 
 export const metadata = {
   description:
-    'High-performance ecommerce store built with Next.js, Vercel, and Mercado Pago.',
+    'High-performance ecommerce store built with Next.js and Mercado Pago by MCCommerce.',
   openGraph: {
     type: 'website'
   }
