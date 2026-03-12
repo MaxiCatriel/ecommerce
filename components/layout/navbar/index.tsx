@@ -7,7 +7,6 @@ import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
 import AuthControls from './auth-controls';
-import LangSwitcher from './lang-switcher';
 
 const { SITE_NAME } = process.env;
 
@@ -55,7 +54,6 @@ export async function Navbar() {
           </Suspense>
         </div>
         <div className="flex items-center justify-end gap-2 md:w-1/3">
-          <LangSwitcher />
           <div className="mr-2 block">
             <AuthControls />
           </div>
