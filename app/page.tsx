@@ -88,6 +88,9 @@ export default async function HomePage() {
       {/* Hero Section - Main conversion driver */}
       <HeroSectionWrapper />
 
+      {/* Homepage Carousel */}
+      <Carousel showPrices={showPrices} />
+
       {/* Personalized Recommendations - Increases engagement */}
       <PersonalizedRecommendations
         recentlyViewed={recentlyViewed}
@@ -98,7 +101,6 @@ export default async function HomePage() {
 
       {/* Original content - Still valuable */}
       {false && <ThreeItemGrid showPrices={showPrices} />}
-      <Carousel showPrices={showPrices} />
       <Footer />
     </>
   );

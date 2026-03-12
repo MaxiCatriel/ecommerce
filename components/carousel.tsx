@@ -1,10 +1,17 @@
 import { getCollectionProducts } from 'lib/shopify';
+import { getDbProducts } from 'lib/providers/catalog';
 import Link from 'next/link';
 import { GridTileImage } from './grid/tile';
 
 export async function Carousel({ showPrices }: { showPrices: boolean }) {
   // Collections that start with `hidden-*` are hidden from the search page.
-  const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
+  let products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
+
+  if (!products?.length) {
+    const dbProducts = await getDbProducts();
+    const tagged = dbProducts.filter((p) => (p.tags || []).includes('homepage-carousel'));
+    products = (tagged.length ? tagged : dbProducts).slice(0, 8);
+  }
 
   if (!products?.length) return null;
 
