@@ -98,7 +98,7 @@ export default async function HomePage() {
 
       {/* Original content - Still valuable */}
       {false && <ThreeItemGrid showPrices={showPrices} />}
-      {false && <Carousel showPrices={showPrices} />}
+      <Carousel showPrices={showPrices} />
       <Footer />
     </>
   );
